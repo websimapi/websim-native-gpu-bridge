@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Native GPU Bridge</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script type="importmap">
+        {
+            "imports": {
+                "fflate": "https://esm.sh/fflate@0.8.0",
+                "three": "https://esm.sh/three@0.160.0"
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="app">
+        <header class="hud-header">
+            <div class="logo">GPU // BRIDGE</div>
+            <div class="connection-status">
+                <span class="status-dot" id="status-dot"></span>
+                <span id="status-text">DISCONNECTED</span>
+            </div>
+            <div class="metrics">
+                <div class="metric">
+                    <span class="label">FPS</span>
+                    <span class="value" id="fps-val">0</span>
+                </div>
+                <div class="metric">
+                    <span class="label">LATENCY</span>
+                    <span class="value" id="latency-val">0ms</span>
+                </div>
+                <div class="metric">
+                    <span class="label">RES</span>
+                    <span class="value" id="res-val">---</span>
+                </div>
+            </div>
+        </header>
+
+        <main class="viewport-container">
+            <canvas id="render-target"></canvas>
+            <div id="overlay-message" class="overlay-message">
+                <h2>Ready to Connect</h2>
+                <p>Start the native bridge server to stream GPU context.</p>
+                
+                <div class="connection-controls">
+                    <input type="text" id="ws-url" value="ws://localhost:8080" placeholder="ws://localhost:8080">
+                    <button id="connect-btn">Connect</button>
+                </div>
+
+                <div class="divider">OR</div>
+                
+                <button id="download-bridge-btn" class="secondary-btn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    Download Bridge App
+                </button>
+            </div>
+        </main>
+
+        <footer class="hud-footer">
+            <div class="log-console" id="log-console">
+                <div class="log-entry system">> System initialized. Waiting for bridge...</div>
+            </div>
+            <div class="controls-hint">
+                Desktop: WASD + Mouse | Mobile: Touch Drag
+            </div>
+        </footer>
+    </div>
+
+    <script type="module" src="js/main.js"></script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"4c6229722a6346bc8eb5cb0e5eae5d41","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+</html>
+
